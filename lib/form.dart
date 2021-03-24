@@ -223,8 +223,8 @@ class _FormPageState extends State<FormPage> {
                                 style: TextStyle(color: Colors.white),
                               ),
                               items: <String>[
-                                'Master\'s & above',
-                                'Bachelor\'s',
+                                "Master's & above",
+                                "Bachelor's",
                                 'Below Secondary'
                               ].map((String value) {
                                 return new DropdownMenuItem<String>(
@@ -457,7 +457,12 @@ class _FormPageState extends State<FormPage> {
                                       barrierColor: Colors.black38,
                                       transitionDuration:
                                           Duration(milliseconds: 100),
-                                      pageBuilder: (ctx, anim1, anim2) =>
+                                      pageBuilder: (ctx, anim1, anim2) => 
+                              //         CustomDialogBox(
+                              // title: "How to use This App",
+                              // descriptions:
+                              //     "Fill in all the details accurately and Press the Check the data button So that our Machine learning model can accurately detect whether to provide promotion to the candidate.",
+                              // text: "OK"),
                                           CustomDialogBox2(
                                         department: department,
                                         recruitment: recruitment,

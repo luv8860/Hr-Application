@@ -1,6 +1,6 @@
-import 'dart:ui';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:hr_application/custombox.dart';
 import 'package:http/http.dart' as http;
 import 'dart:convert';
 
@@ -87,34 +87,35 @@ class _CustomDialogBox2State extends State<CustomDialogBox2> {
     var send = await http.post(url,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(
-            // {
-            //     'dept': department,
-            //     'region': region,
-            //     'education': education,
-            //     'gender': gender,
-            //     'recruitment_channel': recruitment,
-            //     'kpi': kpi == 'yes' ? 1 : 0,
-            //     'award': award == 'yes' ? 1 : 0,
-            //     'age': age,
-            //     'no_of_trainings': trainings,
-            //     'length_of_service': service,
-            //     'avg': avg,
-            //     'previous_year_rating': rate
-            //   }
             {
-              "dept": "Sales & Marketing",
-              "region": "region_19",
-              "education": "Bachelor's",
-              "gender": "male",
-              "recruitment_channel": "sourcing",
-              "no_of_trainings": 1,
-              "age": 34,
-              "previous_year_rating": 3,
-              "length_of_service": 7,
-              "kpi": 0,
-              "awards": 0,
-              "avg": 50
-            }));
+                "dept": department.toString(),
+                "region": region.toString(),
+                "education": education.toString(),
+                "gender": gender.toString(),
+                "recruitment_channel": recruitment.toString(),
+                "kpi": kpi == 'yes' ? 1 : 0,
+                "awards": award == 'yes' ? 1 : 0,
+                "age": age.toString(),
+                "no_of_trainings": trainings.toString(),
+                "length_of_service": service.toString(),
+                "avg": avg.toString(),
+                "previous_year_rating": rate.toString()
+              }
+            // {
+            //   "dept": "Sales & Marketing",
+            //   "region": "region_19",
+            //   "education": "Bachelor's",
+            //   "gender": "male",
+            //   "recruitment_channel": "sourcing",
+            //   "no_of_trainings": 1,
+            //   "age": 34,
+            //   "previous_year_rating": 3,
+            //   "length_of_service": 7,
+            //   "kpi": 0,
+            //   "awards": 0,
+            //   "avg": 50
+            // }
+            ));
     final decode = json.decode(send.body);
     setState(() {
       print(decode.toString() + 'main');
@@ -131,83 +132,17 @@ class _CustomDialogBox2State extends State<CustomDialogBox2> {
 
   @override
   Widget build(BuildContext context) {
-    return urll == null
-        ? Center(
-            child: Container(
-                height: 200, width: 200, child: CircularProgressIndicator()))
-        : Dialog(
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(Constants.padding),
-            ),
-            elevation: 0,
-            backgroundColor: Colors.transparent,
-            child: contentBox(context),
-          );
-  }
-
-  contentBox(context) {
-    Stack(
-      children: <Widget>[
-        Container(
-          padding: EdgeInsets.only(
-              left: Constants.padding,
-              top: Constants.avatarRadius + Constants.padding,
-              right: Constants.padding,
-              bottom: Constants.padding),
-          margin: EdgeInsets.only(top: Constants.avatarRadius),
-          decoration: BoxDecoration(
-              shape: BoxShape.rectangle,
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(Constants.padding),
-              boxShadow: [
-                BoxShadow(
-                    color: Colors.black, offset: Offset(0, 10), blurRadius: 10),
-              ]),
-          child: Column(
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Text(
-                "Result",
-                style: TextStyle(fontSize: 22, fontWeight: FontWeight.w600),
-              ),
-              SizedBox(
-                height: 15,
-              ),
-              Text(
-                urll,
-                style: TextStyle(fontSize: 14),
-                textAlign: TextAlign.center,
-              ),
-              SizedBox(
-                height: 22,
-              ),
-              Align(
-                alignment: Alignment.bottomRight,
-                child: FlatButton(
-                    onPressed: () {
-                      Navigator.of(context).pop();
-                    },
-                    child: Text(
-                      "OK",
-                      style: TextStyle(fontSize: 18),
-                    )),
-              ),
-            ],
-          ),
-        ),
-        Positioned(
-          left: Constants.padding,
-          right: Constants.padding,
-          child: CircleAvatar(
-            backgroundColor: Colors.transparent,
-            radius: Constants.avatarRadius,
-            child: ClipRRect(
-                borderRadius:
-                    BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                child: Icon(Icons.info, size: 75, color: Colors.black54)),
-          ),
-        ),
-      ],
-    );
+    if (urll == null) {
+      return Center(
+          child: Container(
+              height: 200, width: 200, child: CircularProgressIndicator()));
+    } else {
+      return CustomDialogBox(
+          title: "Result",
+          descriptions: urll == "yes"
+              ? "Yes this candidate is eligible"
+              : "Sorry This candidate is not eligible",
+          text: "OK");
+    }
   }
 }

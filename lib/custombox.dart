@@ -73,7 +73,9 @@ class _CustomDialogBoxState extends State<CustomDialogBox> {
               radius: Constants.avatarRadius,
               child: ClipRRect(
                 borderRadius: BorderRadius.all(Radius.circular(Constants.avatarRadius)),
-                  child: Icon(Icons.info,size:75,color:Colors.black54)
+                  child: widget.descriptions=="Yes this candidate is eligible"?Icon(Icons.check_circle ,size:75,color:Colors.green)
+                  :widget.descriptions=="Sorry This candidate is not eligible"?Icon(Icons.close_rounded,size:75,color:Colors.red):
+                  Icon(Icons.info_rounded,size:75,color:Colors.black54)
               ),
             ),
         ),
