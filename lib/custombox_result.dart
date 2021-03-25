@@ -84,37 +84,25 @@ class _CustomDialogBox2State extends State<CustomDialogBox2> {
   String url = "https://hr-application-flutter.herokuapp.com/";
   var urll;
   void getname() async {
+    print("$department,$region,$education,$gender,$recruitment,$trainings,$age,$rate,$service,$kpi,$award,$avg");
     var send = await http.post(url,
         headers: {'Content-Type': 'application/json'},
         body: json.encode(
             {
-                "dept": department.toString(),
-                "region": region.toString(),
-                "education": education.toString(),
-                "gender": gender.toString(),
-                "recruitment_channel": recruitment.toString(),
+                "dept": department,
+                "region": region,
+                "education": education,
+                "gender": gender,
+                "recruitment_channel": recruitment,
+                "no_of_trainings": trainings,
+                "age": age,
+                "previous_year_rating": rate,
+                 "length_of_service": service,
                 "kpi": kpi == 'yes' ? 1 : 0,
                 "awards": award == 'yes' ? 1 : 0,
-                "age": age.toString(),
-                "no_of_trainings": trainings.toString(),
-                "length_of_service": service.toString(),
-                "avg": avg.toString(),
-                "previous_year_rating": rate.toString()
+                "avg": avg,
+                
               }
-            // {
-            //   "dept": "Sales & Marketing",
-            //   "region": "region_19",
-            //   "education": "Bachelor's",
-            //   "gender": "male",
-            //   "recruitment_channel": "sourcing",
-            //   "no_of_trainings": 1,
-            //   "age": 34,
-            //   "previous_year_rating": 3,
-            //   "length_of_service": 7,
-            //   "kpi": 0,
-            //   "awards": 0,
-            //   "avg": 50
-            // }
             ));
     final decode = json.decode(send.body);
     setState(() {

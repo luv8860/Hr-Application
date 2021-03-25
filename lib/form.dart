@@ -388,20 +388,20 @@ class _FormPageState extends State<FormPage> {
                         height: 15.0,
                       ),
                       Container(
-                          width: 300,
+                          width: 265,
                           child: TextFormField(
                               onChanged: (value) {
                                 age = value;
                               },
                               decoration: InputDecoration(
-                                hintText: '    Enter The Age',
+                                hintText: 'Enter The Age',
                                 hintStyle: TextStyle(color: Colors.white),
                               ))),
                       SizedBox(
                         height: 15.0,
                       ),
                       Container(
-                          width: 300,
+                          width: 265,
                           child: TextFormField(
                               onChanged: (value) {
                                 trainings = value;
@@ -415,7 +415,7 @@ class _FormPageState extends State<FormPage> {
                         height: 15.0,
                       ),
                       Container(
-                          width: 300,
+                          width: 265,
                           child: TextFormField(
                               onChanged: (value) {
                                 service = value;
@@ -428,7 +428,7 @@ class _FormPageState extends State<FormPage> {
                         height: 15.0,
                       ),
                       Container(
-                          width: 300,
+                          width: 265,
                           child: TextFormField(
                               onChanged: (value) {
                                 avg = value;
@@ -448,6 +448,8 @@ class _FormPageState extends State<FormPage> {
                             color: Color.fromRGBO(17, 113, 213, 1)),
                         child: Center(
                           child: ButtonTheme(
+                              splashColor: Colors.transparent,
+                              highlightColor: Colors.transparent,
                               minWidth: 200.0,
                               child: FlatButton(
                                   onPressed: () {
@@ -457,24 +459,20 @@ class _FormPageState extends State<FormPage> {
                                       barrierColor: Colors.black38,
                                       transitionDuration:
                                           Duration(milliseconds: 100),
-                                      pageBuilder: (ctx, anim1, anim2) => 
-                              //         CustomDialogBox(
-                              // title: "How to use This App",
-                              // descriptions:
-                              //     "Fill in all the details accurately and Press the Check the data button So that our Machine learning model can accurately detect whether to provide promotion to the candidate.",
-                              // text: "OK"),
+                                      pageBuilder: (ctx, anim1, anim2) =>
                                           CustomDialogBox2(
-                                        department: department,
-                                        recruitment: recruitment,
-                                        region: region,
-                                        rate: rate,
-                                        education: education,
-                                        kpi: kpi,
-                                        award: award,
-                                        trainings: trainings,
-                                        service: service,
-                                        avg: avg,
-                                      ),
+                                              department: department,
+                                              recruitment: recruitment,
+                                              region: region,
+                                              rate: rate,
+                                              education: education,
+                                              kpi: kpi,
+                                              award: award,
+                                              trainings: trainings,
+                                              service: service,
+                                              avg: avg,
+                                              age: age,
+                                              gender: gender),
                                       transitionBuilder:
                                           (ctx, anim1, anim2, child) =>
                                               BackdropFilter(
