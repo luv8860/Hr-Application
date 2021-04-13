@@ -8,3 +8,5 @@ The application enables to predict whether a potential promotee at checkpoint in
 - Heroku
 - Flask
 - Postman(to verify the API)
+
+https://www.linkedin.com/feed/update/urn:li:activity:6780752377378091008/
