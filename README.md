@@ -9,4 +9,10 @@ The application enables to predict whether a potential promotee at checkpoint in
 - Flask
 - Postman(to verify the API)
 
+## Video with explanation
+
 https://www.linkedin.com/feed/update/urn:li:activity:6780752377378091008/
+
+## Dataset
+
+https://datahack.analyticsvidhya.com/contest/wns-analytics-hackathon-2018-1/
